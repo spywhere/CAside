@@ -1,0 +1,40 @@
+{
+	//Java build system (based on default JavaC)
+	"build_system" : "javac \"$file\"",
+
+	//Build command prefix (make command to be "build_command": "build_system")
+	"build_command" : "shell_cmd",
+
+	//Default delay before hide a status text
+	"status_delay" : 5000,
+
+	//Show package path in status bar
+	"show_package_path" : true,
+
+	//Java file validation using RegEx
+	"java_file_validation" : ".*.java$",
+
+	//Package matching using RegEx
+	"package_match" : "([a-zA-Z_\\-$][a-zA-Z\\d_\\-$]*\\.)*",
+
+	//Class matching using RegEx
+	"class_match" : "([a-zA-Z_$][a-zA-Z\\d_$]*)$",
+
+	//Package name prefix using RegEx
+	"package_name_prefix" : "package\\s+",
+
+	//Package name using RegEx
+	"package_name_scope" : "([a-zA-Z_\\-$][a-zA-Z\\d_\\-$]*\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*",
+
+	//Package name suffix using RegEx
+	"package_name_suffix" : ";",
+
+	//Class name prefix using RegEx
+	"class_name_prefix" : "(class|interface|enum)\\s+",
+
+	//Class name using RegEx
+	"class_name_scope" : "(\\w+)",
+
+	//Class name suffix using RegEx
+	"class_name_suffix" : "(\\s+(extends\\s+\\w+)|\\s+(implements\\s+\\w+( ,\\w+)*))?\\s*\\{"
+}
