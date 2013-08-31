@@ -1,6 +1,38 @@
 {
-	//Default delay before hide a status text
+	//Enable CAside:
+	//   Using CAside or not
+	"enable" : true,
+	//Load Delay
+	//   Delay before load a corresponded target file (help fix preview synchronization)
+	"load_delay" : 10,
+	//Synchronize View Index:
+	//   Moving target view to the same position as source view
+	"sync_view_index" : true,
+	//Auto Focus
+	//   Focus a corresponded target file when focus a new source file
+	"auto_focus" : true,
+	//Status Delay
+	//   Delay before hide a status text
 	"status_delay" : 5000,
+	//Extension Matching
+	//   List of source and header file extension to be matched
+	"extensions" : [
+		{
+			"header" : ".h",
+			"source" : ".c"
+		},
+		{
+			"header" : ".h",
+			"source" : ".cpp"
+		},
+		{
+			"header" : ".h",
+			"source" : ".mm"
+		}
+	],
+	//Target Group to show file
+	//   Move all target file to this group
 	"target_group" : 1,
-	"target_view" : 0
+	//Debug message
+	"debug" : false
 }

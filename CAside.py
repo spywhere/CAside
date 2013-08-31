@@ -7,5 +7,14 @@ def plugin_loaded():
 
 
 class EventListener(sublime_plugin.EventListener):
+    def sync_view(self):
+        sublime.active_window().run_command("c_aside_sync")
+
     def on_activated(self, view):
-        view.run_command("c_aside_sync")
+        self.sync_view()
+
+    def on_load(self, view):
+        sublime.set_timeout(self.sync_view, getSettings("load_delay"))
+
+    def on_new(self, view):
+        sublime.set_timeout(self.sync_view, getSettings("load_delay"))

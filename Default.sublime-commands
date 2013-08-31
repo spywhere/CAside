@@ -4,6 +4,20 @@
         "command": "c_aside_select"
     },
     {
+        "caption": "CAside: Enable",
+        "command": "c_aside_enable",
+        "args" : {
+            "enable" : true
+        }
+    },
+    {
+        "caption": "CAside: Disable",
+        "command": "c_aside_enable",
+        "args" : {
+            "enable" : false
+        }
+    },
+    {
         "caption": "CAside: Synchronize",
         "command": "c_aside_sync"
     },

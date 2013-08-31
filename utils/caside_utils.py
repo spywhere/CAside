@@ -1,6 +1,9 @@
 import sublime
+import os
+import time
 
 
+COOLDOWN = None
 STATUS = "CAside"
 SETTINGS = None
 SETTINGSBASE = None
@@ -35,3 +38,26 @@ def showStatus(text, delay=None):
 def hideStatus():
     view = sublime.active_window().active_view()
     view.erase_status(STATUS)
+
+
+def fileExists(path):
+    return os.path.exists(path)
+
+
+def getFileName(path):
+    return os.path.basename(path)
+
+
+def getFileInfo(path):
+    return os.path.splitext(path)
+
+
+def isCooldown():
+    global COOLDOWN
+    if COOLDOWN is None:
+        COOLDOWN = time.time()
+        return True
+    ret = (time.time() - COOLDOWN) > 0.1
+    if ret:
+        COOLDOWN = time.time()
+    return ret
