@@ -4,7 +4,7 @@ A source/header files synchronizer for Sublime Text 3
 
 ### Features
  * Header/Source files synchronization
- * Multiple extensions supported
+ * Multiple extensions supported (via Regular Expression)
  
  
 ### Important Notes

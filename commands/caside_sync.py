@@ -41,6 +41,10 @@ class CAsideSyncCommand(sublime_plugin.WindowCommand):
                 return
             if getSettings("debug"):
                     print("Target file is \"" + file_name + "\"")
+            if getSettings("target_group") > sublime.active_window().num_groups() - 1 and not getSettings("force_load"):
+                if getSettings("debug"):
+                    print("Target group is not visible")
+                return
             target_view = sublime.active_window().find_open_file(file_name)
             alreadyOpen = True
             if target_view is None:
