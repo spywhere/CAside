@@ -1,4 +1,3 @@
-import sublime
 import sublime_plugin
 
 class CAsideEnableCommand(sublime_plugin.WindowCommand):

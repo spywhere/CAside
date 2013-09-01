@@ -32,7 +32,7 @@ When you activate a view, CAside will looking for a file from current view and t
 
 
 ### Installation
-You can install CAside via [Sublime Package Control](http://wbond.net/sublime_packages/package_control) or by clone this repository into your *Sublime Text 3 / Packages* folder
+You can install CAside via [Sublime Package Control](https://sublime.wbond.net/installation) or by clone this repository into your *Sublime Text 3 / Packages* folder
 
 	cd PACKAGES_PATH
 	git clone git://github.com/spywhere/CAside.git
