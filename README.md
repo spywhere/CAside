@@ -12,6 +12,17 @@ You must open your workspace as a group you selected
 
 For example: You select to open all files in group 1, then you must set your workspace to group 2 (View > Groups > Max Columns: 2)
 
+### Commands
+
+The following commands can be accessed via *Command Palette* (Control+Shift+P or Super+Shift+P) only
+
+* Enable/Disable
+	* Enable or disable CAside plugin
+* Select
+	* Select (a view in) currently focused group
+* Synchronize
+	* Synchronize the source and header
+
 ### How it's work
 When you activate a view, CAside will looking for a file from current view and try to find a correspond target file (For example, when you open a .c file, CAside will looking for .h file) if a file is found, it will open on a new group as you assign in settings file.
 
