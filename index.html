@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Caside by spywhere</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Caside</h1>
+        <h2>A Source/Header Files Synchronizer for Sublime Text 3</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/spywhere/CAside/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/spywhere/CAside/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/spywhere/CAside" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2>
+<a name="caside" class="anchor" href="#caside"><span class="octicon octicon-link"></span></a>CAside</h2>
+
+<p>A source/header files synchronizer for Sublime Text 3</p>
+
+<h3>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Header/Source files synchronization</li>
+<li>Multiple extensions supported (via Regular Expression)</li>
+</ul><h3>
+<a name="important-notes" class="anchor" href="#important-notes"><span class="octicon octicon-link"></span></a>Important Notes</h3>
+
+<p>You must open your workspace as a group you selected</p>
+
+<p>For example: You select to open all files in group 1, then you must set your workspace to group 2 (View &gt; Groups &gt; Max Columns: 2)</p>
+
+<h3>
+<a name="commands" class="anchor" href="#commands"><span class="octicon octicon-link"></span></a>Commands</h3>
+
+<p>The following commands can be accessed via <em>Command Palette</em> (Control+Shift+P or Super+Shift+P) only</p>
+
+<ul>
+<li>Enable/Disable
+
+<ul>
+<li>Enable or disable CAside plugin</li>
+</ul>
+</li>
+<li>Select
+
+<ul>
+<li>Select (a view in) currently focused group</li>
+</ul>
+</li>
+<li>Synchronize
+
+<ul>
+<li>Synchronize the source and header</li>
+</ul>
+</li>
+</ul><h3>
+<a name="how-its-work" class="anchor" href="#how-its-work"><span class="octicon octicon-link"></span></a>How it's work</h3>
+
+<p>When you activate a view, CAside will looking for a file from current view and try to find a correspond target file (For example, when you open a .c file, CAside will looking for .h file) if a file is found, it will open on a new group as you assign in settings file.</p>
+
+<h3>
+<a name="caside-in-action" class="anchor" href="#caside-in-action"><span class="octicon octicon-link"></span></a>CAside in action</h3>
+
+<p><img src="http://spywhere.github.io/images/CAsideDemo.gif" alt="Demo"></p>
+
+<h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>You can install CAside via <a href="http://wbond.net/sublime_packages/package_control">Sublime Package Control</a> or by clone this repository into your <em>Sublime Text 3 / Packages</em> folder</p>
+
+<pre><code>cd PACKAGES_PATH
+git clone git://github.com/spywhere/CAside.git
+</code></pre>
+
+<p>PACKAGES_PATH is related to folder which can be accessed via the <em>Preference &gt; Browse Packages...</em></p>
+
+<h3>
+<a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>Settings</h3>
+
+<p>Settings are accessed via the <em>Preferences &gt; Package Settings &gt; CAside</em> or via command palette by type <em>"Preference CAside"</em></p>
+
+<p>Default settings should not be modified. However, you can copy the relevant settings into CAside user settings file</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
