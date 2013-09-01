@@ -1,9 +1,10 @@
 import sublime
 import sublime_plugin
+import re
 
 class CAsideSyncCommand(sublime_plugin.WindowCommand):
     def run(self):
-        from CAside.utils.caside_utils import showStatus, getSettings, fileExists, getFileInfo, isCooldown, getFileName
+        from CAside.utils.caside_utils import showStatus, getSettings, fileExists, isCooldown, getFileName, getFileSplit, getFileJoin
         if getSettings("enable") and isCooldown():
             idx = sublime.active_window().get_view_index(sublime.active_window().active_view())
             if idx[0] == getSettings("target_group"):
@@ -17,24 +18,24 @@ class CAsideSyncCommand(sublime_plugin.WindowCommand):
                 if getSettings("debug"):
                     print("Source file is not on the disk")
                 return
-            file_info = getFileInfo(source_view.file_name())
+            file_info = getFileSplit(source_view.file_name())
             extensions = getSettings("extensions")
             file_name = None
 
             for ext in extensions:
-                source_ext = str.lower(ext["source"])
-                header_ext = str.lower(ext["header"])
-                if str.lower(file_info[1]) == source_ext:
-                    file_name = file_info[0] + header_ext
-                if str.lower(file_info[1]) == header_ext:
-                    file_name = file_info[0] + source_ext
+                source_regex = re.search(ext["source_pattern"], file_info[1], re.I | re.M)
+                header_regex = re.search(ext["header_pattern"], file_info[1], re.I | re.M)
+                if source_regex is not None:
+                    file_name = getFileJoin(file_info[0], source_regex.group(0)+ext["header_suffix"])
+                if header_regex is not None:
+                    file_name =  getFileJoin(file_info[0], header_regex.group(0)+ext["source_suffix"])
                 if file_name is not None and fileExists(file_name):
                     break
 
             if file_name is None or not fileExists(file_name):
                 if getSettings("debug"):
                     if file_name is None:
-                        print("Extension not matched")
+                        print("Pattern not matched")
                     else:
                         print("\"" + file_name + "\" is not found")
                 return
@@ -51,6 +52,7 @@ class CAsideSyncCommand(sublime_plugin.WindowCommand):
                 view_index = 0
             sublime.active_window().set_view_index(target_view, getSettings("target_group"), view_index)
             if alreadyOpen and getSettings("auto_focus"):
+                sublime.active_window().focus_group(getSettings("target_group"))
                 sublime.active_window().focus_view(target_view)
             sublime.active_window().focus_view(source_view)
             if not alreadyOpen:

@@ -48,8 +48,12 @@ def getFileName(path):
     return os.path.basename(path)
 
 
-def getFileInfo(path):
-    return os.path.splitext(path)
+def getFileSplit(path):
+    return os.path.split(path)
+
+
+def getFileJoin(path1, path2):
+    return os.path.join(path1, path2)
 
 
 def isCooldown():

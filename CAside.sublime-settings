@@ -5,6 +5,9 @@
 	//Load Delay
 	//   Delay before load a corresponded target file (help fix preview synchronization)
 	"load_delay" : 10,
+	//Force Load
+	//   Force loading corresponded file even on the same group
+	"force_load" : false,
 	//Synchronize View Index:
 	//   Moving target view to the same position as source view
 	"sync_view_index" : true,
@@ -15,19 +18,27 @@
 	//   Delay before hide a status text
 	"status_delay" : 5000,
 	//Extension Matching
-	//   List of source and header file extension to be matched
+	//   List of source and header file regular expression to be matched (ignore case-sensitive)
+	//   - xx_pattern will be use to validate current file
+	//   - xx_suffix will be use to find corresponded file
 	"extensions" : [
 		{
-			"header" : ".h",
-			"source" : ".c"
+			"header_pattern" : "^.*(?=\\.h$)",
+			"header_suffix" : ".h",
+			"source_pattern" : "^.*(?=\\.c$)",
+			"source_suffix" : ".c"
 		},
 		{
-			"header" : ".h",
-			"source" : ".cpp"
+			"header_pattern" : "^.*(?=\\.h$)",
+			"header_suffix" : ".h",
+			"source_pattern" : "^.*(?=\\.cpp$)",
+			"source_suffix" : ".cpp"
 		},
 		{
-			"header" : ".h",
-			"source" : ".mm"
+			"header_pattern" : "^.*(?=\\.h$)",
+			"header_suffix" : ".h",
+			"source_pattern" : "^.*(?=\\.mm$)",
+			"source_suffix" : ".mm"
 		}
 	],
 	//Target Group to show file
