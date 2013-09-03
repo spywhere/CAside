@@ -3,20 +3,34 @@ import sublime_plugin
 import re
 
 class CAsideSyncCommand(sublime_plugin.WindowCommand):
-    def run(self):
+    def run(self, group=-1, view=-1):
         from CAside.utils.caside_utils import showStatus, getSettings, fileExists, isCooldown, getFileName, getFileSplit, getFileJoin
         if getSettings("enable") and isCooldown():
-            idx = sublime.active_window().get_view_index(sublime.active_window().active_view())
+            if group < 0 and view < 0:
+                if getSettings("debug"):
+                    print("View is not a working file")
+                return
+            elif group < 0 or view < 0:
+                idx = sublime.active_window().get_view_index(sublime.active_window().active_view())
+            else:
+                idx = [group, view]
             if idx[0] == getSettings("target_group"):
                 if getSettings("debug"):
                     print("Working on opened group")
                 return
-            source_view = sublime.active_window().active_view()
+            if getSettings("debug"):
+                    print("Current view is " + str(idx[0]) + ":" + str(idx[1]))
+            if group < 0 or view < 0:
+                source_view = sublime.active_window().active_view()
+            else:
+                source_view = sublime.active_window().views_in_group(idx[0])[idx[1]]
             if source_view is None:
                 return
             if source_view.file_name() is None:
                 if getSettings("debug"):
                     print("Source file is not on the disk")
+                return
+            if source_view.file_name() is None:
                 return
             file_info = getFileSplit(source_view.file_name())
             extensions = getSettings("extensions")
