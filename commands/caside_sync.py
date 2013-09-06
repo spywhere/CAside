@@ -64,7 +64,7 @@ class CAsideSyncCommand(sublime_plugin.WindowCommand):
             if target_view is None:
                 target_view = sublime.active_window().open_file(file_name)
                 alreadyOpen = False
-            if getSettings("sync_view_index"):
+            if alreadyOpen and getSettings("sync_view_index"):
                 view_index = sublime.active_window().get_view_index(source_view)[1]
                 if view_index >= len(sublime.active_window().views_in_group(getSettings("target_group"))):
                     view_index = len(sublime.active_window().views_in_group(getSettings("target_group")))-1
