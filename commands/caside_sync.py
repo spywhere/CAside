@@ -62,12 +62,15 @@ class CAsideSyncCommand(sublime_plugin.WindowCommand):
             target_view = sublime.active_window().find_open_file(file_name)
             alreadyOpen = True
             if target_view is None:
+                if getSettings("debug"):
+                    print("Open target file in new tab")
                 target_view = sublime.active_window().open_file(file_name)
                 alreadyOpen = False
-            if alreadyOpen and getSettings("sync_view_index"):
+            viewCount = len(sublime.active_window().views_in_group(getSettings("target_group")))
+            if getSettings("sync_view_index") and viewCount > 0:
                 view_index = sublime.active_window().get_view_index(source_view)[1]
-                if view_index >= len(sublime.active_window().views_in_group(getSettings("target_group"))):
-                    view_index = len(sublime.active_window().views_in_group(getSettings("target_group")))-1
+                if view_index >= viewCount and alreadyOpen:
+                    view_index = viewCount-1
             else:
                 view_index = 0
             sublime.active_window().set_view_index(target_view, getSettings("target_group"), view_index)
@@ -75,5 +78,10 @@ class CAsideSyncCommand(sublime_plugin.WindowCommand):
                 sublime.active_window().focus_group(getSettings("target_group"))
                 sublime.active_window().focus_view(target_view)
             sublime.active_window().focus_view(source_view)
-            if not alreadyOpen:
+            if alreadyOpen:
+                if getSettings("debug"):
+                    print(getFileName(file_name) + " has moved to view: " + str(view_index))
+            else:
+                if getSettings("debug"):
+                    print(getFileName(file_name) + " opened in Group: " + str(getSettings("target_group")) + " View: " + str(view_index))
                 showStatus(getFileName(file_name) + " opened in Group: " + str(getSettings("target_group")))
